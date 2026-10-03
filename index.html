@@ -1,0 +1,79 @@
+<!doctype html>
+<html lang="pt-PT">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta name="theme-color" content="#10120f" />
+    <meta name="description" content="Analisa a frequência do som à tua volta em tempo real." />
+    <title>Frequência — analisador de som</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link href="https://fonts.googleapis.com/css2?family=DM+Mono:wght@400;500&family=DM+Sans:wght@400;500;600;700&family=Manrope:wght@400;500;600;700;800&display=swap" rel="stylesheet" />
+    <link rel="stylesheet" href="./style.css" />
+    <script src="./app.js" defer></script>
+  </head>
+  <body>
+    <div class="app-shell">
+      <header class="topbar">
+        <a class="brand" href="#" aria-label="Frequência, início">
+          <img class="brand-mark" src="./icons/waveform.svg" alt="" />
+          <span>frequência<span class="brand-dot">.</span></span>
+        </a>
+        <div class="topbar-note"><span class="live-indicator"></span> Analisador de som</div>
+      </header>
+
+      <main>
+        <section class="intro">
+          <p class="eyebrow">OUVE. DESCOBRE.</p>
+          <h1>O som tem<br /><span>uma medida.</span></h1>
+          <p class="intro-copy">Capta o som à tua volta e vê a frequência fundamental em tempo real.</p>
+        </section>
+
+        <section class="analyzer" aria-label="Analisador de frequência">
+          <div class="analyzer-topline">
+            <div class="status-wrap"><span class="status-dot" id="status-dot"></span><span id="status-text">PRONTO A OUVIR</span></div>
+            <button class="settings-button" id="settings-button" aria-label="Definições de áudio" title="Definições de áudio">
+              <img class="settings-icon" src="./icons/settings.svg" alt="" />
+            </button>
+          </div>
+
+          <div class="frequency-display" aria-live="polite">
+            <div class="frequency-number" id="frequency">—</div>
+            <div class="frequency-unit">HERTZ <span>(Hz)</span></div>
+          </div>
+
+          <div class="note-row">
+            <span class="note-pill" id="note">—</span>
+            <span class="note-description" id="note-description">A frequência aparecerá aqui</span>
+          </div>
+
+          <div class="visualizer-wrap">
+            <div class="visualizer-labels"><span>FORMA DE ONDA</span><span id="range-label">0 — 2 kHz</span></div>
+            <canvas id="visualizer" aria-label="Visualização do som captado"></canvas>
+            <div class="frequency-scale"><span>BAIXOS</span><span>MÉDIOS</span><span>AGUDOS</span></div>
+          </div>
+
+          <div class="controls">
+            <button class="mic-button" id="mic-button" aria-label="Começar a ouvir" title="Começar a ouvir">
+              <img class="mic-icon" src="./icons/microphone.svg" alt="" />
+              <span class="visually-hidden" id="button-label">Começar a ouvir</span>
+            </button>
+            <p class="permission-note" id="permission-note">O microfone só é ativado quando carregas no botão.</p>
+          </div>
+          <div class="settings-panel" id="settings-panel" hidden>
+            <label for="sensitivity">Sensibilidade do microfone <span id="sensitivity-value">Alta</span></label>
+            <input id="sensitivity" type="range" min="0.0005" max="0.08" step="0.0005" value="0.001" />
+            <p>Usa uma sensibilidade maior para sons mais baixos.</p>
+          </div>
+        </section>
+
+        <section class="how-it-works">
+          <img class="info-icon" src="./icons/info.svg" alt="" />
+          <p><strong>Como funciona</strong><br />O microfone capta vibrações no ar. A app analisa-as e estima a frequência fundamental do som mais forte.</p>
+        </section>
+      </main>
+
+      <footer><span>FEITO PARA OUVIR MELHOR</span><span>O áudio é processado localmente no teu dispositivo.</span></footer>
+    </div>
+  </body>
+</html>
